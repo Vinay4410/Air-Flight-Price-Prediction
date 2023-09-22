@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f2f2f2; /* Light gray background */
+        }
+    
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgb(176, 215, 203); /* White container background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(18, 18, 18, 0.1); /* Box shadow */
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Ensure padding and border don't increase width */
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%; /* Button takes full width */
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+    </style>    
+</head>
+<body>
+    <div class="container"></div>
+
+        <h1>Flight Price Prediction</h1>
+        <form action="/predict" method="post">
+
+            <label for="TotalStop">Total Stop:</label>
+            <input type="text" id="TotalStop" name="TotalStop" placeholder="Enter Day" required><br>
+
+            <label for="journeyDay">Journey Day:</label>
+            <input type="text" id="journeyDay" name="journeyDay" placeholder="Enter Day" required><br>
+
+            <label for="journeyMonth">Journey Month:</label>
+            <input type="text" id="journeyMonth" name="journeyMonth" placeholder="Enter Month" required><br>
+
+            <label for="depHour">Departure Hour:</label>
+            <input type="text" id="depHour" name="depHour" placeholder="Enter Hour" required><br>
+
+            <label for="depMin">Departure Minute:</label>
+            <input type="text" id="depMin" name="depMin" placeholder="Enter Minute" required><br>
+
+            <label for="arrivalHour">Arrival Hour:</label>
+            <input type="text" id="arrivalHour" name="arrivalHour" placeholder="Enter Hour" required><br>
+
+            <label for="arrivalMin">Arrival Minute:</label>
+            <input type="text" id="arrivalMin" name="arrivalMin" placeholder="Enter Minute" required><br>
+
+            <label for="durationHours">Duration Hours:</label>
+            <input type="text" id="durationHours" name="durationHours" placeholder="Enter Hours" required><br>
+
+            <label for="durationMins">Duration Minutes:</label>
+            <input type="text" id="durationMins" name="durationMins" placeholder="Enter Minutes" required><br>
+
+            <label for="airline">Airline:</label>
+            <select id="airline" name="airline" required>
+                <option value="Air India">Air India</option>
+                <option value="GoAir">GoAir</option>
+                <option value="IndiGo">IndiGo</option>
+                <option value="Jet Airways">Jet Airways</option>
+                <option value="Jet Airways Business">Jet Airways Business</option>
+                <option value="Multiple carriers">Multiple carriers</option>
+                <option value="Multiple carriers Premium economy">Multiple carriers Premium economy</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="Trujet">Trujet</option>
+                <option value="Vistara">Vistara</option>
+                <option value="Vistara Premium economy">Vistara Premium economy</option>
+                <option value="Air Asia">Air Asia</option>
+            </select><br>
+
+            <label for="source">Source:</label>
+            <select id="source" name="source" required>
+                <option value="Chennai">Chennai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bangalore">Bangalore</option>
+                <!-- Add more source options as needed -->
+            </select><br>
+
+            <label for="destination">Destination:</label>
+            <select id="destination" name="destination" required>
+                <option value="Cochin">Cochin</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <!-- Add more destination options as needed -->
+            </select><br>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+            <h2>{{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
